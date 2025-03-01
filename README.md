@@ -13,7 +13,7 @@ This web application allows users to view and manage a list of influencers, cate
 - **Sorting**: 
   - Influencers can be sorted by:
     - Followers count
-    - Average engagement metrics (likes, shares, comments)
+    - Average engagement metrics in campaigns (interactions/opens)
   
 - **Detailed View**: 
   - Each influencer’s detailed statistics, including their location and campaign participation, can be viewed with a simple click.
