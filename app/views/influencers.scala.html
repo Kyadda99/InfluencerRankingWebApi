@@ -1,0 +1,208 @@
+@(influencers: Seq[InfluencerWithFullData])
+
+@main("Ranking of Influencers") {
+    <head>
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    </head>
+
+    <h1>List of Influencers</h1>
+    <div class="sorting-buttons">
+        <div class="invite-button">
+            <a href="@routes.InfluencerController.getNano(sortBy = Some("followers"))" class="btn-invite">Sort by Followers</a>
+        </div>
+        <div class="invite-button">
+            <a href="@routes.InfluencerController.getNano(sortBy = Some("averageInteraction"))" class="btn-invite">Sort by Interactions</a>
+        </div>
+    </div>
+
+        <!-- Nano Influencers (1-10k followers) -->
+    <ul class="influencer-list-all">
+
+
+    <h2>Nano Influencers (1-10k followers)</h2>
+    <ul class="influencer-list">
+    @for((i, index) <- influencers.filter(i => i.influencer.followers >= 1000 && i.influencer.followers <= 10000).zipWithIndex) {
+        <li class="influencer-item" onclick="toggleDetails('nano-@index')">
+            <div class="info-line">
+                <span class="info-left">
+                    <span class="index">@(index + 1)</span>
+                    <span class="name">@i.influencer.name</span>
+                </span>
+                <span class="info-right">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>@i.influencer.followers</span>
+                </span>
+            </div>
+
+            <div id="nano-@index" class="details" style="display: none;">
+                <div class="info-line">
+                    <span>@i.influencer.location</span>
+                    <span class="spacer"></span>
+                    <span>@i.campaignsCount campaigns</span>
+                </div>
+                <div class="info-line">
+                    <strong>Average Engagement</strong>
+                </div>
+                <div class="info-line">
+                    <div class="engagement-item left">
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        <span>@i.averageLikes</span>
+                    </div>
+                    <div class="engagement-item center">
+                        <i class="fa-regular fa-share-from-square"></i>
+                        <span>@i.averageShares</span>
+                    </div>
+                    <div class="engagement-item right">
+                        <i class="fa-regular fa-comment"></i>
+                        <span>@i.averageComments</span>
+                    </div>
+                </div>
+
+                <div class="invite-button">
+                    <button class="btn-invite" onclick="showInvitationPopup()">Invite to Campaign</button>
+                </div>
+            </div>
+        </li>
+    }
+    </ul>
+
+        <!-- Micro Influencers (10-100k followers) -->
+    <h2>Micro Influencers (10k-100k followers)</h2>
+    <ul class="influencer-list">
+    @for((i, index) <- influencers.filter(i => i.influencer.followers > 10000 && i.influencer.followers <= 100000).zipWithIndex) {
+        <li class="influencer-item" onclick="toggleDetails('micro-@index')">
+            <div class="info-line">
+                <span class="info-left">
+                    <span class="index">@(index + 1)</span>
+                    <span class="name">@i.influencer.name</span>
+                </span>
+                <span class="info-right">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>@i.influencer.followers</span>
+                </span>
+            </div>
+
+            <div id="micro-@index" class="details" style="display: none;">
+                <div class="info-line">
+                    <span>@i.influencer.location</span>
+                    <span class="spacer"></span>
+                    <span>@i.campaignsCount campaigns</span>
+                </div>
+                <div class="info-line">
+                    <strong>Average Engagement</strong>
+                </div>
+                <div class="info-line">
+                    <div class="engagement-item left">
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        <span>@i.averageLikes</span>
+                    </div>
+                    <div class="engagement-item center">
+                        <i class="fa-regular fa-share-from-square"></i>
+                        <span>@i.averageShares</span>
+                    </div>
+                    <div class="engagement-item right">
+                        <i class="fa-regular fa-comment"></i>
+                        <span>@i.averageComments</span>
+                    </div>
+                </div>
+
+                <div class="invite-button">
+                    <button class="btn-invite" onclick="showInvitationPopup()">Invite to Campaign</button>
+                </div>
+            </div>
+        </li>
+    }
+    </ul>
+
+        <!-- Macro Influencers (100k+ followers) -->
+    <h2>Macro Influencers (100k+ followers)</h2>
+    <ul class="influencer-list">
+    @for((i, index) <- influencers.filter(i => i.influencer.followers > 100000).zipWithIndex) {
+        <li class="influencer-item" onclick="toggleDetails('macro-@index')">
+            <div class="info-line">
+                <span class="info-left">
+                    <span class="index">@(index + 1)</span>
+                    <span class="name">@i.influencer.name</span>
+                </span>
+                <span class="info-right">
+                    <i class="fa-solid fa-user-plus"></i>
+                    <span>@i.influencer.followers</span>
+                </span>
+            </div>
+
+            <div id="macro-@index" class="details" style="display: none;">
+                <div class="info-line">
+                    <span>@i.influencer.location</span>
+                    <span class="spacer"></span>
+                    <span>@i.campaignsCount campaigns</span>
+                </div>
+                <div class="info-line">
+                    <strong>Average Engagement</strong>
+                </div>
+                <div class="info-line">
+                    <div class="engagement-item left">
+                        <i class="fa-regular fa-thumbs-up"></i>
+                        <span>@i.averageLikes</span>
+                    </div>
+                    <div class="engagement-item center">
+                        <i class="fa-regular fa-share-from-square"></i>
+                        <span>@i.averageShares</span>
+                    </div>
+                    <div class="engagement-item right">
+                        <i class="fa-regular fa-comment"></i>
+                        <span>@i.averageComments</span>
+                    </div>
+                </div>
+                <div class="invite-button">
+                    <button class="btn-invite" onclick="showInvitationPopup()">Invite to Campaign</button>
+                </div>
+            </div>
+        </li>
+    }
+    </ul>
+    </ul>
+        <!-- Invitation Popup -->
+    <div id="popup-message" class="popup-message">Invite send</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+            // Toggle details based on section and index (unique identifier for each influencer)
+            function toggleDetails(id) {
+                var element = document.getElementById(id);
+
+                if (element.style.display === "none" || element.style.display === "") {
+                    document.querySelectorAll('.details').forEach(el => el.style.display = "none");
+                    element.style.display = "block";
+                } else {
+                    element.style.display = "none";
+                }
+            }
+
+            // Show invitation popup for 2 seconds
+            function showInvitationPopup() {
+                $('#popup-message').fadeIn();
+                setTimeout(function() {
+                    $('#popup-message').fadeOut();
+                }, 2000);
+            }
+            let currentSort = "followers"; // Default sort criteria
+
+            function toggleSorting() {
+                const button = document.getElementById("sortButton");
+
+                if (currentSort === "followers") {
+                    currentSort = "averageInteraction"; // Change to interaction
+                    button.textContent = "Sort by Interactions"; // Change button text
+                } else {
+                    currentSort = "followers"; // Change to followers
+                    button.textContent = "Sort by Followers"; // Change button text
+                }
+
+                // Redirect to the appropriate route
+                window.location.href = `@routes.InfluencerController.getNano(sortBy = Some("${currentSort}"))`;
+            }
+
+    </script>
+}

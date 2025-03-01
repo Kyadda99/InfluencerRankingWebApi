@@ -1,0 +1,139 @@
+
+body {
+    font-family: 'Montserrat', serif;
+    background-color: #F1F2F3;
+}
+
+.influencer-list-all {
+    margin-left: 20%;
+
+}.influencer-list {
+    list-style: none; /* Usuwa kropki z listy */
+    padding: 0;
+    margin: 0;
+    max-width: 50%;
+    margin: 0 auto;
+    margin-left: 0;
+
+}
+
+/* Stylizacja dla pojedynczego elementu listy */
+.influencer-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+/* Stylizacja dla każdej linii informacji */
+.info-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Spacer między elementami */
+.spacer {
+    margin-right: 10px;
+}
+
+/* Stylizacja dla każdego elementu */
+.index {
+    font-weight: bold;
+}
+
+.name {
+    font-weight: bold;
+}
+
+/* Stylizacja dla przycisku */
+.sorting-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: left;
+    margin-left: 20%;
+}
+
+.invite-button {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.btn-invite {
+    background-color: #5E17EB;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    text-decoration: none; /* Usuwamy podkreślenie linku */
+    display: inline-block; /* Upewniamy się, że element jest wyświetlany w linii */
+}
+
+.btn-invite:hover {
+    background-color: #4A0EB2; /* Kolor na hover */
+}
+
+.btn-invite:focus {
+    outline: none;
+}
+
+
+/* Popup z wiadomością */
+.popup-message {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px 40px;
+    background-color: #ffcfec;
+    border: 2px solid #ebbfff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-size: 32px;
+    color: #333;
+}
+.info-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.info-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.follower-icon {
+    margin-right: 5px;
+}
+
+.engagement-item {
+    display: flex;
+    align-items: center;
+}
+
+.engagement-item i {
+    margin-right: 8px; /* Odstęp między ikoną a liczbą */
+}
+
+/* Dostosowanie elementów z lewej, środka i prawej */
+.engagement-item.left {
+    justify-content: flex-start;
+}
+
+.engagement-item.center {
+    justify-content: center;
+}
+
+.engagement-item.right {
+    justify-content: flex-end;
+}

@@ -1,0 +1,10 @@
+@()
+
+@main("Welcome to Play") {
+  <h1>Welcome to Play!</h1>
+
+  <a href="@routes.InfluencerController.getNano(sortBy = Some("averageInteraction"))" class="btn btn-primary">
+    View Influencers
+  </a>
+
+}
